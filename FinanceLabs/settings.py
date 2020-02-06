@@ -27,7 +27,7 @@ SECRET_KEY = ')lqp3%)7wzq9f4wgk3o$kbr$w$+usptqd!ohcb(0d$!)n8=+7y'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['doubletroubleof.pythonanywhere.com']
+ALLOWED_HOSTS = []
 
 
 # Application definition
@@ -126,11 +126,7 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
-<<<<<<< HEAD
-STATIC_ROOT = os.path.join(BASE_DIR, 'static')
-=======
 
 STATIC_ROOT = os.path.join(PROJECT_ROOT, 'static')
 
 LOGIN_REDIRECT_URL = 'admin/'
->>>>>>> cc523d3016ac65f43d5cfb25bd5294971430810b
