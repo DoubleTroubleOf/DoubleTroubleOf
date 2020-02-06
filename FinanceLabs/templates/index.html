@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+
+{% block title %} Головна сторінка {% endblock %}
+
+{% block content %}
+
+
+    <a style="margin-bottom: 100px;" href="{% url 'articles:index' %}"> Статті </a><br>
+    <a href="{% url 'articles:new_article' %}"> Опублікувати статтю </a>
+
+    
+{% endblock %}

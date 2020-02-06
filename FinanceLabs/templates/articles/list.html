@@ -8,7 +8,8 @@
         
         {% for a in latest_articles_list %}
             <a href="{% url 'articles:detail' a.id %}"> {{a.article_title}}</a>
-        {% endfor %}
+            <br>
+            {% endfor %}
     
     {% else %}
         Статті не знайдені

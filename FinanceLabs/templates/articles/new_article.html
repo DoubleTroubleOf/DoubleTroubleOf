@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+{% block title %} Нова стаття {% endblock %}
+
+{% block content %}
+
+<form action="{% url 'articles:create_article' %}" method="POST">
+
+    {% csrf_token %}
+
+    <input type="text" required  placeholder="Назва статті" name="new_title"> <br>
+    
+    <textarea name="new_text"  required placeholder="Текст вашої статті" cols="100" rows="20"></textarea><br>
+
+    <button type="submit">Створити статтю</button>
+
+</form>
+
+{% endblock %}

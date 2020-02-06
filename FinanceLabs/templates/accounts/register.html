@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block title %} Реєстрація {% endblock %}
+
+{% block content %}
+
+<form action="{% url 'accounts:register' %}" method="POST">
+
+    {% csrf_token %}
+
+    <input type="text" required  placeholder="Ім/'я" name="first_name"> <br>
+    <input type="text" required  placeholder="Прізвище" name="last_name"> <br>
+    <input type="text" required  placeholder="Псевдонім" name="username"> <br>
+    <input type="email" required  placeholder="Електронна почта" name="email"> <br>
+    <input type="password" required  placeholder="Пароль" name="password1"> <br>
+    <input type="password" required  placeholder="Підтвердження паролю" name="password2"> <br>
+    
+    <button type="submit">Зареєструватись</button>
+
+</form>
+
+{% endblock %}
