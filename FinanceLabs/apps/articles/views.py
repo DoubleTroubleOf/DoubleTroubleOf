@@ -24,5 +24,5 @@ def leave_comment(request, article_id):
         raise Http404('Стаття не знайдена')
 
     a.comment_set.create(author_name=request.POST['name'], comment_text=request.POST['text'])
-    
+
     return HttpResponseRedirect( reverse('articles:detail', args=(a.id,)) )
