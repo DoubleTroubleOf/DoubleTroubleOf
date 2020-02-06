@@ -126,4 +126,11 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
+<<<<<<< HEAD
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+=======
+
+STATIC_ROOT = os.path.join(PROJECT_ROOT, 'static')
+
+LOGIN_REDIRECT_URL = 'admin/'
+>>>>>>> cc523d3016ac65f43d5cfb25bd5294971430810b

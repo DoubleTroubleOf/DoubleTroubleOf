@@ -4,6 +4,16 @@
 
 {% block content %}
 
+<<<<<<< HEAD
     <a href="{% url 'articles:index' %}"> Статті </a>
 
+=======
+
+    <a style="margin-bottom: 100px;" href="{% url 'articles:index' %}"> Статті </a><br>
+    <a href="{% url 'articles:new_article' %}"> Опублікувати статтю </a><br>
+    <a href="{% url 'accounts:register' %}"> Створити аккаунт </a><br>
+    <a href="/admins"> АДМІНКА</a><br>
+    
+    
+>>>>>>> cc523d3016ac65f43d5cfb25bd5294971430810b
 {% endblock %}

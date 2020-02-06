@@ -9,8 +9,13 @@
         {% for a in latest_articles_list %}
             <a href="{% url 'articles:detail' a.id %}"> {{a.article_title}}</a>
             <br>
+<<<<<<< HEAD
         {% endfor %}
 
+=======
+            {% endfor %}
+    
+>>>>>>> cc523d3016ac65f43d5cfb25bd5294971430810b
     {% else %}
         Статті не знайдені
     {% endif %}

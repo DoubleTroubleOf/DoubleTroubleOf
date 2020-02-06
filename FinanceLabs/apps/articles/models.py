@@ -6,13 +6,21 @@ from django.utils import timezone
 class Article(models.Model):
     article_title = models.CharField('Назва статті', max_length=100)
     article_text =  models.TextField('Текст статті')
-    pub_date = models.DateTimeField('Дата публікації')
+    pub_date = models.DateTimeField('Дата публікації',auto_now=True)
+    article_rate = models.FloatField('Рейтинг статті', default=0.0)
 
+   
     def __str__(self):
         return self.article_title
 
     def was_published_recently(self):
         return self.pub_date >= (timezone.now() - datetime.timedelta(days=7))
+
+    def calculate_rate(self, new_rate):
+        if self.article_rate == 0.0:
+            self.article_rate = float(new_rate)
+        else:
+            self.article_rate = (self.article_rate + float(new_rate)) / 2
 
     class Meta:
         verbose_name = 'Стаття'

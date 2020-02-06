@@ -12,6 +12,17 @@
 НОВА СТАТТЯ!
 {% endif %}
 
+<p>
+    <form action="{% url 'articles:update_rate' article.id %}" method="POST">
+
+        {% csrf_token %}
+        <b> {{article.article_rate}}</b>               <input type="number" default=0.0 placeholder="Ваша оцінка" max="5" min="0" name="new_rate"> <br>
+     
+        <button type="submit">Залишити оцінку</button>
+    
+    </form>
+ </p>
+
 <hr>
 {% if latest_comment_list %}
     {% for c in latest_comment_list %}
@@ -23,13 +34,14 @@
 {% else %}
 Коментарів не знайдено. Станьте першим.
 {% endif %}
+
 <hr>
 
 <form action="{% url 'articles:leave_comment' article.id %}" method="POST">
 
     {% csrf_token %}
 
-    <input type="text" requireq placeholder="Ваше ім*я" name="name"> <br>
+    <input type="text" required placeholder="Ваше ім*я" name="name"> <br>
     <textarea name="text" required="" placeholder="Текст вашого коментарія" cols="30" rows="10"></textarea><br>
 
     <button type="submit">Залишити комантар</button>
