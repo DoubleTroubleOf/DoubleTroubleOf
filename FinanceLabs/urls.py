@@ -16,7 +16,10 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from . import views
+<<<<<<< HEAD
+=======
 
+>>>>>>> cc523d3016ac65f43d5cfb25bd5294971430810b
 
 urlpatterns = [
     path('', views.base, name ='base'),

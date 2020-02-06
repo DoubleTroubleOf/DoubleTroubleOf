@@ -35,6 +35,9 @@ def leave_comment(request, article_id):
         raise Http404('Стаття не знайдена')
 
     a.comment_set.create(author_name=request.POST['name'], comment_text=request.POST['text'])
+<<<<<<< HEAD
+
+=======
     
     return HttpResponseRedirect( reverse('articles:detail', args=(a.id,)) )
 
@@ -45,4 +48,5 @@ def new_article(request):
 def create_article(request):
     a = Article(article_title = request.POST['new_title'], article_text = request.POST['new_text'])
     a.save()
+>>>>>>> cc523d3016ac65f43d5cfb25bd5294971430810b
     return HttpResponseRedirect( reverse('articles:detail', args=(a.id,)) )
