@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+
+{% block title %} {{Показники}} {% endblock %}
+
+{% block content %}
+
+<hr>
+
+    {% if indicators_list %}
+        
+        {% for i in indicators_list %}
+            <a> {{i}}</a>
+            <br>
+            {% endfor %}
+    
+    {% else %}
+        Показники не знайдені
+    {% endif %}
+<hr>
+<hr>
+
+<form action="{% url 'articles:add_indicators' %}" method="POST">
+
+    {% csrf_token %}
+
+    <input type="number"  default = 1 required placeholder="Квартал" max="4" min="1"  name="kvartal"> 
+    <input type="number" default=2020 placeholder="Рік" min="2020" name="year"> <br>
+   
+    <input type="number" default=0.0 placeholder="постійні витрати" name="e">
+    <input type="number" default=0.0 placeholder="змінні витрати" name="c">
+    <input type="number" default=0.0 placeholder="об'єм продаж" name="v">
+    
+    <button type="submit">Додати показник</button>
+
+</form>
+
+<hr>
+<br>
+<br>
+<form action="{% url 'articles:download_indocators' %}" method="POST">
+
+    {% csrf_token %}
+    
+    <button type="submit">Завантажити в *.csv </button>
+
+</form>
+{% endblock %}
