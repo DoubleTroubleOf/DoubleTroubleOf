@@ -1,7 +1,7 @@
 from django.http import Http404, HttpResponseRedirect, HttpResponse
 import csv
 from django.shortcuts import render
-from .models import Article
+from .models import Article, Indicator
 from django.urls import reverse
 from django.utils import timezone
 
@@ -47,3 +47,47 @@ def create_article(request):
     a = Article(article_title = request.POST['new_title'], article_text = request.POST['new_text'])
     a.save()
     return HttpResponseRedirect( reverse('articles:detail', args=(a.id,)) )
+
+
+def show_indicators(request):
+    indicators_list = Indicator.objects.all()
+    return render(request, 'articles/indicators.html', {'indicators_list': indicators_list} )
+
+def add_indicators(request):
+    kv = float( request.POST['kvartal'] )
+    y = request.POST['year'] 
+    income = float( request.POST['income'] )
+    
+
+    i = Indicator(Kvartal = kv, Year = y, Income = income)
+    i.save()
+    return HttpResponseRedirect( reverse('articles:show_indicators') )
+
+def download_indocators(request):
+    response = HttpResponse(content_type='text/csv')
+    response['Content-Disposition'] = 'attachment; filename="indicators.csv"'
+    #writer = csv.writer(response)
+    
+    fieldnames = ['Year','Kvartal', 'Income']
+    writer =csv.DictWriter(response, dialect=csv.Dialect.escapechar, quotechar='\r', quoting=csv.QUOTE_NONE, fieldnames = fieldnames)
+    writer.writeheader()
+    data = Indicator.objects.filter()
+    investments = 10000
+    s, PB = 0, 0
+
+    
+    for item in data:
+        y = item.Year
+        kv = item.Kvartal
+        income = item.Income
+        if s <= investments:
+            s += income
+            PB += 1
+        
+        writer.writerow({'Year': y, 'Kvartal': kv, 'Income': income })
+
+    writer.writerow({'Income': PB })
+
+    return response 
+
+

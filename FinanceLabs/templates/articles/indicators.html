@@ -1,3 +1,4 @@
+
 {% extends 'base.html' %}
 
 {% block title %} {{Показники}} {% endblock %}
@@ -26,9 +27,8 @@
     <input type="number"  default = 1 required placeholder="Квартал" max="4" min="1"  name="kvartal"> 
     <input type="number" default=2020 placeholder="Рік" min="2020" name="year"> <br>
    
-    <input type="number" default=0.0 placeholder="постійні витрати" name="e">
-    <input type="number" default=0.0 placeholder="змінні витрати" name="c">
-    <input type="number" default=0.0 placeholder="об'єм продаж" name="v">
+    <input type="number" default=0.0 placeholder="Чистий дохід" name="income">
+
     
     <button type="submit">Додати показник</button>
 

@@ -38,3 +38,16 @@ class Comment(models.Model):
         verbose_name = 'Коментарій'
         verbose_name_plural = 'Коментарі'
 
+class Indicator(models.Model):
+    Kvartal = models.DecimalField('Квартал', max_digits= 1, decimal_places=0)
+    Year = models.CharField('Рік', max_length=4)
+
+    Income = models.DecimalField('Чистий дохід', max_digits= 5, decimal_places=0)
+    
+    
+    def __str__(self):
+        return str(self.Year)+':'+ str(self.Kvartal) + '  ||   ' + str(self.Income)
+
+    class Meta:
+        verbose_name = 'Показник ефективності'
+        verbose_name_plural = 'Показники ефективності'
