@@ -6,17 +6,28 @@
 {% block content %}
 
 <hr>
-
-    {% if indicators_list %}
+    <table>
+    <tr>
+        <td>
+            {% if indicators_list %}
+            
+            {% for i in indicators_list %}
+                <a> {{i}}</a>
+                <br>
+                {% endfor %}
         
-        {% for i in indicators_list %}
-            <a> {{i}}</a>
-            <br>
-            {% endfor %}
+            {% else %}
+                Показники не знайдені
+            {% endif %}
+        </td>
+        <td>
+            {% load static %}
+            <img src="{% static "screen.png" %}" align="rigth" alt="My image">
+        </td>
+    </tr>
+    </table>
     
-    {% else %}
-        Показники не знайдені
-    {% endif %}
+    
 <hr>
 <hr>
 
@@ -32,12 +43,13 @@
 
 <hr>
 <br>
-<br>
+
+<p>Результат періоду окупаємості:  {{ Payback }}</p>
 <form action="{% url 'articles:download_indocators' %}" method="POST">
     {% csrf_token %}
     
     <button type="submit">Завантажити в *.csv </button>
-    <img src="../screen.png">
+    
 </form>
 <p>
 

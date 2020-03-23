@@ -51,7 +51,16 @@ def create_article(request):
 
 def show_indicators(request):
     indicators_list = Indicator.objects.all()
-    return render(request, 'articles/indicators.html', {'indicators_list': indicators_list} )
+    data = Indicator.objects.filter()
+    investments = 10000
+    s, PB = 0, 0
+    
+    for item in data:
+        income = item.Income
+        if s <= investments:
+            s += income
+            PB += 1 
+    return render(request, 'articles/indicators.html', {'indicators_list': indicators_list, 'Payback': PB} )
 
 def add_indicators(request):
     kv = float( request.POST['kvartal'] )
